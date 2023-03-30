@@ -1,6 +1,6 @@
 use mavenfuzzyfactory;
 SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
-/*yêu cầu 1*/
+/*Task 1*/ Traffic source survey
 select STR_TO_DATE('12/04/2012', '%d/%m/%Y');
 select
         utm_source,utm_campaign,http_referer,
@@ -10,7 +10,7 @@ where created_at < STR_TO_DATE('12/04/2012', '%d/%m/%Y')
 group by utm_campaign
 order by number_session desc;
 
-/*yêu cầu 2*/ 
+/*Task 2*/ Conversion rate from traffic source
 select STR_TO_DATE('14/04/2012', '%d/%m/%Y');
 select
         utm_source,utm_campaign,
@@ -22,7 +22,7 @@ where w.created_at < STR_TO_DATE('14/04/2012', '%d/%m/%Y')
 and utm_source ='gsearch'
 and utm_campaign='nonbrand';
 
-/*yêu cầu 3*/ 
+/*Task 3*/ Traffic source trends
 select STR_TO_DATE('15/05/2012', '%d/%m/%Y');
 select		
         /*created_at,
@@ -35,7 +35,7 @@ and utm_source ='gsearch'
 and utm_campaign='nonbrand'
 group by week(created_at);
 
-/*yêu cầu 4*/ 
+/*Task 4*/ Optimize bids for paid traffic
 select STR_TO_DATE('11/05/2012', '%d/%m/%Y');
  select
 		w.device_type,
@@ -50,7 +50,7 @@ and utm_campaign='nonbrand'
 group by 1 
 order by 3 desc;
 
-/*yêu cầu 5*/ 
+/*Task 5*/ Check the result after increasing bid
 select STR_TO_DATE('15/04/2012', '%d/%m/%Y');
 select		
         min(date(created_at)) as start_of_week,
