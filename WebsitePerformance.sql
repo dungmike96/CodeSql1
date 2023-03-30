@@ -114,7 +114,7 @@ on website_pageviews.website_pageview_id =
 first_test_pageviews.min_pageview_id
 where website_pageviews.pageview_url in ('/home', '/lander-1');
 
--- Bước 4: Viết truy vấn lọc ra các web_session_id bị thoát phiên (Sinh viên thực hiện)
+-- Bước 4: Viết truy vấn lọc ra các web_session_id bị thoát phiên 
 SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 create temporary table bounced_session
 select 
@@ -173,7 +173,7 @@ website_pageviews.website_pageview_id
 having (sessions_w_min_pv_id_and_view_count.count_pageviews)=1;
 
 /*Bước 3: Hiển thị tỷ lệ thoát phiên trên toàn trang web theo tuần, đồng thời hiển thị cả số 
-phiên được phân vào /home và số phiên được phân vào /lander-1 (Sinh viên thực hiện)*/
+phiên được phân vào /home và số phiên được phân vào /lander-1 */
 
 select
 min(date(sessions_w_counts_lander_and_created_at.session_created_at)) as week_start_date,
